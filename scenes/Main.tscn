@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://dq1ipjrxophyy"]
+
+[ext_resource type="Script" path="res://scenes/Main.gd" id="1_3n7p4"]
+[ext_resource type="PackedScene" uid="uid://cydsst8mcjvp3" path="res://scenes/world/Switcher.tscn" id="1_7823f"]
+[ext_resource type="PackedScene" uid="uid://bkegff18dx0l0" path="res://scenes/ui/MainMenu.tscn" id="2_7vfrd"]
+[ext_resource type="Texture2D" uid="uid://bmkb4o03i8ihu" path="res://assets/ui/menu_btn.png" id="4_1a1yy"]
+[ext_resource type="LabelSettings" uid="uid://c3r0bbw3x4dyg" path="res://assets/ui/buttonLabel.tres" id="5_tcqcw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bs3oj"]
+atlas = ExtResource("4_1a1yy")
+region = Rect2(0, 0, 100, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm3gx"]
+atlas = ExtResource("4_1a1yy")
+region = Rect2(100, 0, 100, 40)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_3n7p4")
+
+[node name="Switcher" parent="." instance=ExtResource("1_7823f")]
+
+[node name="MainMenu" parent="." instance=ExtResource("2_7vfrd")]
+
+[node name="GameMenu" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 40.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+
+[node name="MenuBtn" type="TextureButton" parent="GameMenu"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_bs3oj")
+texture_hover = SubResource("AtlasTexture_lm3gx")
+
+[node name="Label" type="Label" parent="GameMenu/MenuBtn"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu"
+label_settings = ExtResource("5_tcqcw")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="GameMenu/MenuBtn" to="." method="_on_menu_btn_pressed"]
