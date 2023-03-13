@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd2xa1u0frwch"]
+
+[ext_resource type="Script" path="res://scenes/Game.gd" id="1_6eskh"]
+[ext_resource type="PackedScene" uid="uid://cydsst8mcjvp3" path="res://scenes/world/Switcher.tscn" id="1_qsg0a"]
+[ext_resource type="PackedScene" uid="uid://bkegff18dx0l0" path="res://scenes/ui/MainMenu.tscn" id="2_2a7yq"]
+[ext_resource type="PackedScene" uid="uid://cbkvnr1e0q3ij" path="res://scenes/ui/GameMenu.tscn" id="3_fiepd"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_6eskh")
+
+[node name="Switcher" parent="." instance=ExtResource("1_qsg0a")]
+
+[node name="MainMenu" parent="." instance=ExtResource("2_2a7yq")]
+size_flags_horizontal = 4
+
+[node name="GameMenu" parent="." instance=ExtResource("3_fiepd")]
+offset_left = -120.0
+offset_bottom = 60.0
+size_flags_horizontal = 4

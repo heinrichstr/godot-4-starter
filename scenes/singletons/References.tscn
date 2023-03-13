@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bavmh2aqgknn7"]
+
+[ext_resource type="Script" path="res://scenes/singletons/References.gd" id="1_ax2gu"]
+
+[node name="References" type="Node"]
+script = ExtResource("1_ax2gu")
