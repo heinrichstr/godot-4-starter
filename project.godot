@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 State="*res://scenes/singletons/State.tscn"
 References="*res://scenes/singletons/References.tscn"
 
+[display]
+
+window/size/borderless=true
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
