@@ -6,6 +6,7 @@ var gameScene = preload("res://scenes/Game.tscn")
 
 func _ready():
 	References.main_node = self
+	
 
 
 func loadGame():

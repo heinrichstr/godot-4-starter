@@ -4,40 +4,51 @@ extends Control
 
 var animating = false
 var shown = false
+var settingsShown = false
+var creditsShown = false
 
 
 func _ready():
-	$Menu.modulate = Color(1,1,1,0)
 	$Menu.hide()
+	$SettingsMenu.menu_node = self
+	$SettingsMenu.hide()
+	$Credits.menu_node = self
+	$Credits.hide()
 
 
 func showMenu():
-	if animating == false:
-		var tw = get_tree().create_tween().set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT).set_parallel()
-		
-		State.player_input = false
-		$Menu.modulate = Color(1,1,1,0)
-		$Menu.show()
-		tw.tween_property($Menu, "modulate", Color(1,1,1,1), 0.5)
-		
-		await tw
-		State.player_input = true
-		animating = false
-		shown = true
+	get_tree().paused = true
+	$Menu.show()
+	shown = true
 
 
 func hideMenu():
-	if animating == false:
-		var tw = get_tree().create_tween().set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT).set_parallel()
-		
-		State.player_input = false
-		animating = true
-		$Menu.modulate = Color(1,1,1,1)
-		
-		tw.tween_property($Menu, "modulate", Color(1,1,1,0), 0.5)
-		
-		await tw
-		$Menu.hide()
-		State.player_input = true
-		animating = false
-		shown = false
+	if settingsShown:
+		hide_settings()
+	
+	if creditsShown:
+		hide_credits()
+	
+	$Menu.hide()
+	shown = false
+	get_tree().paused = false
+
+
+func show_settings():
+	$SettingsMenu.show()
+	settingsShown = true
+
+
+func hide_settings():
+	$SettingsMenu.hide()
+	settingsShown = false
+
+
+func show_credits():
+	$Credits.show()
+	creditsShown = true
+
+
+func hide_credits():
+	$Credits.hide()
+	creditsShown = false
