@@ -9,6 +9,8 @@ var creditsShown = false
 
 
 func _ready():
+	#set menu to default view
+	
 	$Menu.hide()
 	$SettingsMenu.menu_node = self
 	$SettingsMenu.hide()
@@ -16,23 +18,35 @@ func _ready():
 	$Credits.hide()
 
 
+#menu state func below
+
 func showMenu():
+	#pause game on menu load and show menu
+	
 	get_tree().paused = true
 	$Menu.show()
 	shown = true
 
 
 func hideMenu():
+	#hide menu and trigger settings to save to user config, unpause game
+	
 	if settingsShown:
 		hide_settings()
 	
 	if creditsShown:
 		hide_credits()
 	
+	var error = SettingsManager.save_config() 
+	if error != OK:
+		printerr("Failure!")
+	
 	$Menu.hide()
 	shown = false
 	get_tree().paused = false
 
+
+#inner menu func below
 
 func show_settings():
 	$SettingsMenu.show()

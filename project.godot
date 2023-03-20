@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 State="*res://scenes/singletons/State.tscn"
 References="*res://scenes/singletons/References.tscn"
+SettingsManager="*res://scenes/singletons/SettingsManager.tscn"
 
 [display]
 
